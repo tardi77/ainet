@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PT ALAM INFORMASI TEKNOLOGI - IT Solutions & Services</title>
+    <style>
+        /* --- CSS VARIABLES & RESET --- */
+        :root {
+            --primary-color: #004a99; /* Deep Corporate Blue */
+            --secondary-color: #0066cc; /* Brighter Blue for accents */
+            --accent-color: #f39c12; /* Gold/Orange for highlights */
+            --text-dark: #333333;
+            --text-light: #666666;
+            --bg-light: #f4f7f6;
+            --white: #ffffff;
+            --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --max-width: 1200px;
+            --shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-family);
+            color: var(--text-dark);
+            line-height: 1.6;
+            background-color: var(--white);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* --- TYPOGRAPHY --- */
+        h1, h2, h3, h4 {
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 3px;
+            background-color: var(--accent-color);
+            margin: 10px auto 0;
+        }
+
+        p {
+            margin-bottom: 1rem;
+        }
+
+        /* --- LAYOUT UTILITIES --- */
+        .container {
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section {
+            padding: 80px 0;
+        }
+
+        .bg-light {
+            background-color: var(--bg-light);
+        }
+
+        /* --- HEADER & NAVIGATION --- */
+        header {
+            background-color: var(--white);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo span {
+            color: var(--text-dark);
+            font-weight: 400;
+            font-size: 0.9rem;
+            margin-left: 10px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            min-height: 500px;
+            background: linear-gradient(135deg, #f0f4f8 0%, #ffffff 100%);
+        }
+
+        .hero-content {
+            flex: 1;
+            padding-right: 40px;
+        }
+
+        .hero-content h1 {
+            font-size: 2.8rem;
+            line-height: 1.2;
+            color: var(--primary-color);
+        }
+
+        .hero-content .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            margin-bottom: 30px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: var(--primary-color);
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+        }
+
+        .hero-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .company-info table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .company-info td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .company-info td:first-child {
+            font-weight: bold;
+            width: 40%;
+            color: var(--primary-color);
+            background-color: #f9f9f9;
+        }
+
+        .company-info td:last-child {
+            width: 60%;
+        }
+
+        /* --- SERVICES SECTION --- */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s;
+            border-top: 4px solid var(--secondary-color);
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+        }
+
+        .service-body {
+            padding: 25px;
+        }
+
+        .service-body h3 {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+        }
+
+        .service-list {
+            list-style-type: none;
+        }
+
+        .service-list li {
+            position: relative;
+            padding-left: 20px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-light);
+        }
+
+        .service-list li::before {
+            content: '•';
+            color: var(--secondary-color);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* --- MAJOR LINES OF BUSINESS --- */
+        .business-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            justify-content: center;
+        }
+
+        .business-item {
+            flex: 1 1 400px;
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent-color);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .business-item h3 {
+            font-size: 1.3rem;
+            color: var(--text-dark);
+        }
+        
+        .business-item p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+
+        /* --- CUSTOMER REFERENCE --- */
+        .customers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .customer-col {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+
+        .customer-col h3 {
+            border-bottom: 2px solid #eee;
+            padding-bottom: 15px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .customer-list {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .customer-list span {
+            display: inline-block;
+            margin: 0 5px;
+        }
+        
+        /* --- CONTACT SECTION --- */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .contact-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background-color: var(--primary-color);
+        }
+
+        .contact-card h3 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .contact-detail {
+            margin-bottom: 15px;
+            font-size: 1rem;
+        }
+
+        .contact-detail strong {
+            display: block;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+
+        .contact-img-placeholder {
+            width: 100%;
+            height: 100%;
+            min-height: 300px;
+            object-fit: cover;
+            border-radius: 8px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #302C42;
+            color: #bdc3c7;
+            padding: 50px 0 20px;
+            text-align: center;
+        }
+
+        .footer-social {
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            display: inline-block;
+            margin: 0 10px;
+            padding: 10px;
+            border: 1px solid #bdc3c7;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            line-height: 18px;
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border-color: var(--white);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            border-top: 1px solid #2c3e50;
+            padding-top: 20px;
+            margin-top: 20px;
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            nav {
+                flex-direction: column;
+                height: auto;
+                padding: 15px 0;
+            }
+
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            .hero {
+                flex-direction: column-reverse;
+                text-align: center;
+                padding: 60px 0;
+            }
+
+            .hero-content {
+                padding-right: 0;
+                margin-top: 30px;
+            }
+            
+            .about-grid, .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="/image/ait.png" alt="AINET" width="110" height="auto">
+ <span><B>PT ALAM INFORMASI TEKNOLOGI</B></span>
+                </div>
+                <div class="nav-links">
+                    <a href="#about">About</a>
+                    <a href="#services">Services</a>
+                    <a href="#business">Business</a>
+                    <a href="#customers">Customers</a>
+                    <a href="#contact">Contact</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero">
+                <div class="hero-content">
+                    <h1>Your Trusted Partner in IT Solutions</h1>
+                    <p class="subtitle">Expanding from Jakarta, Bekasi, and Karawang. Building a deep-rooted base with high quality, low price, and fast response.</p>
+                    <a href="#contact" class="cta-button">Contact Us Today</a>
+                </div>
+                <div class="hero-image">
+                    <!-- Placeholder for gbr1.png -->
+                    <img src="/image/IT-Solutions.png" alt="Company Representation" width="600" height="400">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2>About Us</h2>
+            <div class="about-grid">
+                <div class="about-text"><img src="/image/@it.png" alt="AINET" width="400" height="auto">
+                    <p>Our company has been established by bringing together young system engineers with comprehensive knowledge of the Japanese corporate culture through experience in the development, operation and maintenance of computer systems in the Japanese oriented corporations.</p>
+                    <p>We are expanding mainly from Jakarta, Bekasi, and Karawang area and we aim to build a deep-rooted base in the local markets, keeping high quality, low price and fast response in mind, working diligently one step at a time to become the kind of company that is trusted and felt secured by our customers.</p>
+                </div>
+                <div class="company-info">
+                    <table>
+                        <tr>
+                            <td>Company Name</td>
+                            <td>PT ALAM INFORMASI TEKNOLOGI</td>
+                        </tr>
+                        <tr>
+                            <td>Established</td>
+                            <td>April 2002</td>
+                        </tr>
+                        <tr>
+                            <td>Employees</td>
+                            <td>20 (Multi Language: English, Japanese, Mandarin, Indonesia)</td>
+                        </tr>
+                        <tr>
+                            <td>Office</td>
+                            <td>Jakarta Head Office, Cikarang Office, Mangga Dua Support Center</td>
+                        </tr>
+                        <tr>
+                            <td>Capital</td>
+                            <td>USD 200,000</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section bg-light">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="services-grid">
+                
+                <!-- Service 1 -->
+                <article class="service-card">
+                    <!-- Placeholder for gbr1_1.png -->
+                    <img src="/image/consul.jpg" alt="IT Consultant" class="service-img">
+                    <div class="service-body">
+                        <h3>IT Consultants</h3>
+                        <p>PT. Alam Informasi Teknologi offers several service consultants for your business.</p>
+                        
+                        <h4 style="font-size:1rem; margin-top:15px;">Network Consultant Service Include:</h4>
+                        <ul class="service-list">
+                            <li>Checking viruses between LAN</li>
+                            <li>Monitoring ISP connection</li>
+                            <li>Limiting bandwidth</li>
+                            <li>Network consultants</li>
+                            <li>Filter & forward traffic</li>
+                            <li>Check LAN stabilization</li>
+                            <li>Provide routers</li>
+                        </ul>
+
+                        <h4 style="font-size:1rem; margin-top:15px;">IT Maintenance Include:</h4>
+                        <ul class="service-list">
+                            <li>Install and Update Software</li>
+                            <li>Hardware installation & Troubleshooting</li>
+                            <li>Optimization of PC Settings</li>
+                            <li>Reinstall Operating System</li>
+                            <li>Server Installation and Maintenance</li>
+                            <li>Mail Hosting Maintenance</li>
+                        </ul>
+                    </div>
+                </article>
+
+                <!-- Service 2 -->
+                <article class="service-card">
+                    <!-- Placeholder for fiber.png -->
+                    <img src="/image/ISP.jpg" alt="ISP Service" class="service-img">
+                    <div class="service-body">
+                        <h3>ISP</h3>
+                        <p><strong>Internet Service Providers.</strong></p>
+                        <p>PT. Alam Informasi Teknologi offers wireless-based internet whether for housing, apartments, offices or factories.</p>
+                        <br>
+                        <p style="font-style: italic; color: var(--primary-color);">"Please contact us if there is a thing of need for help"</p>
+                        <p><center><img src="/image/ait.png" alt="AINET" width="110" height="auto"></center></p>
+                    </div>
+                </article>
+
+                <!-- Service 3 -->
+                <article class="service-card">
+                    <!-- Placeholder for network.png -->
+                    <img src="/image/Network-Security-Solutions-Houston.jpg" alt="Network Security" class="service-img">
+                    <div class="service-body">
+                        <h3>Network & Security Solution</h3>
+                        <p>PT. Alam Informasi Teknologi also offers Network Solutions for businesses and individuals, such as:</p>
+                        <ul class="service-list">
+                            <li>Lan Network Installation</li>
+                            <li>Wan Network Installation</li>
+                            <li>CCTV Installation</li>
+                            <li>Mikrotik & Fortinet devices installation</li>
+                            <li>Firewall configuration</li>
+                            <li>Access Point setup</li>
+                        </ul>
+                    </div>
+                </article>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Major Lines of Business -->
+    <section id="business" class="section">
+        <div class="container">
+            <h2>Major Lines of Business</h2>
+            <!-- Placeholder for cloud_computing.png logic embedded in background or header if needed, 
+                 but listed as text content here for clarity -->
+            <div class="business-list">
+                <div class="business-item">
+                    <h3>Software Development</h3>
+                    <p>Web Base, Windows Base, Linux Base, PDA Base Business Application</p>
+                </div>
+                <div class="business-item">
+                    <h3>Communications and Network Services</h3>
+                    <p>Intranet Design, LAN Cabling, PABX Telephone System, VOIP, VPN, Mail System, TV Conference</p>
+                </div>
+                <div class="business-item">
+                    <h3>Package Software Sales</h3>
+                    <p>SAP Business One, IP-Guard, Sales, Purchasing, Accounting, Inventory, Payroll, etc</p>
+                </div>
+                <div class="business-item">
+                    <h3>Hardware/Software Sales</h3>
+                    <p>Server/PC ( English, Japanese ), XEROX Copy Machine, Network Devices ( Firewall, Router, HUB/Switch, Access Point ), CCTV, Finger Scan, O/S, Office, AntiVirus</p>
+                </div>
+                <div class="business-item">
+                    <h3>Software & Hardware Maintenance</h3>
+                    <p>Installation, Operation, Maintenance Services (On-Call Base, On-Site Base, Out Sourcing)</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reference -->
+    <section id="customers" class="section bg-light">
+        <div class="container">
+            <h2>Customer Reference</h2>
+            <div class="customers-grid">
+                <!-- Placeholder for happycust.png implied via layout -->
+                <div class="customer-col">
+                    <h3>Japanese Companies</h3>
+                    <div class="customer-list">
+                        <p>STXI, CMKS, MSHI, JPSI, GTIM, SSK, NACI, KBI</p>
+                        <p>Other twenty several companies</p>
+                    </div>
+                </div>
+                <div class="customer-col">
+                    <h3>Foreign Companies</h3>
+                    <div class="customer-list">
+                        <p>THI, ATRY, HIT, TECHNO, YHS, YISN, DYEE, HONC</p>
+                        <p>Other dozen</p>
+                    </div>
+                </div>
+                <div class="customer-col">
+                    <h3>Local Companies</h3>
+                    <div class="customer-list">
+                        <p>SSI, DLM, KBS, CPM, TOA, RUTRA, PINTAN, SCHL</p>
+                        <p>Other dozen</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Person -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2>Contact Person</h2>
+            <div class="contact-wrapper">
+                <div class="contact-info-container" style="display:flex; flex-direction:column; gap:30px;">
+                    <!-- Jakarta Office -->
+                    <div class="contact-card">
+                        <h3>Jakarta Office (Head Office)</h3>
+                        <div class="contact-detail">
+                            <strong>TEL :</strong>
+                            (62-21) 612-0135, (62-21) 623-18196
+                        </div>
+                        <div class="contact-detail">
+                            <strong>FAX :</strong>
+                            (62-21) 612-1320
+                        </div>
+                        <div class="contact-detail">
+                            <strong>PIC :</strong>
+                            Iswan (HP: 0818-899250)
+                        </div>
+                    </div>
+
+                    <!-- Cikarang Office -->
+                    <div class="contact-card">
+                        <h3>Cikarang Office (Support Center)</h3>
+                        <div class="contact-detail">
+                            <strong>TEL :</strong>
+                            (62-21) 8967-7016
+                        </div>
+                        <div class="contact-detail">
+                            <strong>FAX :</strong>
+                            (62-21) 8967-7017
+                        </div>
+                        <div class="contact-detail">
+                            <strong>PIC :</strong>
+                            Tei (HP: 0811-989928), Iswan (HP: 0818-899250)
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Placeholder for contact.png -->
+                <div class="contact-visual">
+                    <img src="/image/contact.png" alt="Contact Us" class="contact-img-placeholder">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+                <!-- Placeholder for contact.png -->
+                <div class="footer-visual">
+                    <img src="/image/ait.png" alt="AINET" width="180" height="auto" class="footer-img-placeholder">
+                </div>
+            <div class="footer-social">
+                <p>Follow us</p>
+                <a href="http://www.twitter.com/aitsystems" target="_blank" aria-label="Twitter">Twitter</a>
+                <!-- Added generic placeholder icons for other socials if needed, strictly adhering to prompt source -->
+            </div>
+            <p class="copyright">
+                2023-2026 © AInet<br>
+                Powered with AInet ™
+            </p>
+        </div>
+    </footer>
+
+    <!-- Optional: Smooth Scroll Script (Optional enhancement, works with CSS scroll-behavior usually, but added for robustness) -->
+    <script>
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
